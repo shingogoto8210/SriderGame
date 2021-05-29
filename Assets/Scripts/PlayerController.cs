@@ -8,16 +8,18 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private Rigidbody rb;
     [SerializeField] private PhysicMaterial pmNoFriction;
-
     [Header("加速速度")]
     public float accelerationSpeed;
+    private bool isGoal;
+
+    private float coefficient = 0.95f;
+    private float stopValue = 2.5f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         //移動
@@ -28,6 +30,25 @@ public class PlayerController : MonoBehaviour
     {
         Brake();
         Accelerate();
+        if(isGoal == true)
+        {
+            rb.velocity *= coefficient;
+            if(rb.velocity.z <= stopValue)
+            {
+                rb.velocity = Vector3.zero;
+                rb.isKinematic = true;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+       if(other.gameObject.tag == "Goal")
+        {
+            Debug.Log("Goal");
+            isGoal = true;
+            Debug.Log(isGoal);
+        }
     }
 
     /// <summary>
@@ -35,11 +56,13 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
+        if(isGoal == true)
+        {
+            return;
+        }
         float x = Input.GetAxis("Horizontal");
 
         rb.velocity = new Vector3(x * moveSpeed, rb.velocity.y, rb.velocity.z);
-
-        Debug.Log(rb.velocity);
     }
 
     /// <summary>
@@ -62,7 +85,6 @@ public class PlayerController : MonoBehaviour
         {
             pmNoFriction.dynamicFriction = 0;
         }
-        Debug.Log(pmNoFriction.dynamicFriction);
     }
 
     /// <summary>
