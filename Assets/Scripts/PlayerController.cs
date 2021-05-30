@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("加速速度")]
     public float accelerationSpeed;
     private bool isGoal;
-    private float coefficient = 0.95f;
+    private float coefficient = 0.85f;
     private float stopValue = 2.5f;
 
     void Start()
