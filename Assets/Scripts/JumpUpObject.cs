@@ -36,6 +36,7 @@ public class JumpUpObject : MonoBehaviour
 
     void HeadUp()
     {
-        transform.position = upPosition;
+        //transform.position = upPosition;
+        transform.DOMoveY(-6.0f, 0.25f);
     }
 }

@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
         float x = Input.GetAxis("Horizontal");
-
         rb.velocity = new Vector3(x * moveSpeed, rb.velocity.y, rb.velocity.z);
     }
 
