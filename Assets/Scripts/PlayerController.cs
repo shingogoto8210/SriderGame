@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Rigidbody rb;
     [Header("移動速度")]
     public float moveSpeed;
-    private Rigidbody rb;
     [SerializeField] private PhysicMaterial pmNoFriction;
     [Header("加速速度")]
     public float accelerationSpeed;
     private bool isGoal;
-
     private float coefficient = 0.95f;
     private float stopValue = 2.5f;
 
