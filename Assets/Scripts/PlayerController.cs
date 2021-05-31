@@ -10,9 +10,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PhysicMaterial pmNoFriction;
     [Header("加速速度")]
     public float accelerationSpeed;
+    [Header("ジャンプ力")]
+    public float jumpPower;
     private bool isGoal;
-    private float coefficient = 0.85f;
+    private float coefficient = 0.90f;
     private float stopValue = 2.5f;
+    [SerializeField, Header("地面判定用レイヤー")]
+    private LayerMask groundLayer;
+    [SerializeField, Header("斜面との接地判定")]
+    private bool isGround;
 
     void Start()
     {
@@ -29,14 +35,20 @@ public class PlayerController : MonoBehaviour
     {
         Brake();
         Accelerate();
-        if(isGoal == true)
+        if (isGoal == true)
         {
             rb.velocity *= coefficient;
-            if(rb.velocity.z <= stopValue)
+            if (rb.velocity.z <= stopValue)
             {
                 rb.velocity = Vector3.zero;
                 rb.isKinematic = true;
             }
+        }
+
+        CheckGround();
+        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        {
+            Jump();
         }
     }
 
@@ -46,7 +58,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Goal");
             isGoal = true;
-            Debug.Log(isGoal);
         }
     }
 
@@ -95,5 +106,16 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, accelerationSpeed);
         }
+    }
+
+    private void Jump()
+    {
+            rb.AddForce(transform.up * jumpPower);
+    }
+
+    private void CheckGround()
+    {
+        isGround = Physics.Linecast(transform.position, transform.position - transform.up * 0.3f, groundLayer);
+        Debug.DrawLine(transform.position, transform.position - transform.up * 0.3f, Color.red);
     }
 }
