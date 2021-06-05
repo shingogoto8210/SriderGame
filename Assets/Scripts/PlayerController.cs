@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Header("斜面との接地判定")]
     private bool isGround;
     private Animator anim;
+    private int score;
 
     void Start()
     {
@@ -118,5 +119,11 @@ public class PlayerController : MonoBehaviour
     {
         isGround = Physics.Linecast(transform.position, transform.position - transform.up * 0.3f, groundLayer);
         Debug.DrawLine(transform.position, transform.position - transform.up * 0.3f, Color.red);
+    }
+
+    public void AddScore(int point)
+    {
+        score += point;
+        Debug.Log(score);
     }
 }
