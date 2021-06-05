@@ -13,32 +13,32 @@ AnimatorController:
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 9100000}
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: Walk
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: jump
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_DefaultBool: 1
+    m_Controller: {fileID: 0}
   - m_Name: jump2
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: stun
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -140,10 +140,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 110115020}
   - {fileID: 1101720121681991426}
-  - {fileID: 1101142319766322578}
-  - {fileID: 1101074446702555890}
   m_StateMachineBehaviours: []
   m_Position: {x: -96, y: 72, z: 0}
   m_IKOnFeet: 0
@@ -253,17 +250,8 @@ AnimatorStateMachine:
     m_State: {fileID: 110243382}
     m_Position: {x: -96, y: 72, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 110212408}
-    m_Position: {x: 552, y: 108, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 110298320}
-    m_Position: {x: 336, y: 36, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 110252584}
-    m_Position: {x: 396, y: -48, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 110258180}
-    m_Position: {x: 516, y: -120, z: 0}
+    m_Position: {x: 330, y: 80, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -463,7 +451,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.6590909
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1

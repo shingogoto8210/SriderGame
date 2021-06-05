@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,10 +17,12 @@ public class PlayerController : MonoBehaviour
     private LayerMask groundLayer;
     [SerializeField, Header("斜面との接地判定")]
     private bool isGround;
+    private Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       if(other.gameObject.tag == "Goal")
+        if (other.gameObject.tag == "Goal")
         {
             Debug.Log("Goal");
             isGoal = true;
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        if(isGoal == true)
+        if (isGoal == true)
         {
             return;
         }
@@ -81,11 +81,11 @@ public class PlayerController : MonoBehaviour
     {
         float vertical = Input.GetAxis("Vertical");
 
-        if(vertical < 0)
+        if (vertical < 0)
         {
             pmNoFriction.dynamicFriction += Time.deltaTime;
 
-            if(pmNoFriction.dynamicFriction > 1.0f)
+            if (pmNoFriction.dynamicFriction > 1.0f)
             {
                 pmNoFriction.dynamicFriction = 1.0f;
             }
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     void Accelerate()
     {
         float vertical = Input.GetAxis("Vertical");
-        if(vertical > 0)
+        if (vertical > 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, accelerationSpeed);
         }
@@ -110,7 +110,8 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-            rb.AddForce(transform.up * jumpPower);
+        rb.AddForce(transform.up * jumpPower);
+        anim.SetTrigger("jump");
     }
 
     private void CheckGround()
