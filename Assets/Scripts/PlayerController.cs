@@ -11,14 +11,15 @@ public class PlayerController : MonoBehaviour
     [Header("ジャンプ力")]
     public float jumpPower;
     private bool isGoal;
-    private float coefficient = 0.95f;
+    private float coefficient = 0.96f;
     private float stopValue = 2.5f;
     [SerializeField, Header("地面判定用レイヤー")]
     private LayerMask groundLayer;
     [SerializeField, Header("斜面との接地判定")]
     private bool isGround;
     private Animator anim;
-    private int score;
+    public int score;
+    [SerializeField] private UIManager UIM;
 
     void Start()
     {
@@ -121,9 +122,13 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(transform.position, transform.position - transform.up * 0.3f, Color.red);
     }
 
+    /// <summary>
+    /// スコア加算
+    /// </summary>
+    /// <param name="point"></param>
     public void AddScore(int point)
     {
         score += point;
-        Debug.Log(score);
+        UIM.UpdateDisplayScore(score);
     }
 }
