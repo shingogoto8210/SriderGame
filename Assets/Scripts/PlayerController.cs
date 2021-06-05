@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("ジャンプ力")]
     public float jumpPower;
     private bool isGoal;
-    private float coefficient = 0.96f;
+    private float coefficient = 0.955f;
     private float stopValue = 2.5f;
     [SerializeField, Header("地面判定用レイヤー")]
     private LayerMask groundLayer;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool isGround;
     private Animator anim;
     public int score;
-    [SerializeField] private UIManager UIM;
+    [SerializeField] private UIManager UImanager;
 
     void Start()
     {
@@ -129,6 +129,6 @@ public class PlayerController : MonoBehaviour
     public void AddScore(int point)
     {
         score += point;
-        UIM.UpdateDisplayScore(score);
+        UImanager.UpdateDisplayScore(score);
     }
 }

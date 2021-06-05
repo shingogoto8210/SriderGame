@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text textScore;
-    private PlayerController PC;
+    [SerializeField] private Text textTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        PC = GameObject.Find("penguin").GetComponent<PlayerController>();
+        
     }
 
     // Update is called once per frame
@@ -21,5 +22,10 @@ public class UIManager : MonoBehaviour
     public void UpdateDisplayScore(int score)
     {
         textScore.text = score.ToString();
+    }
+
+    public void UpdateDisplayGameTime(int time)
+    {
+        textTime.text = time.ToString();
     }
 }
