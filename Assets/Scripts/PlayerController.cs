@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("ジャンプ力")]
     public float jumpPower;
     private bool isGoal;
-    private float coefficient = 0.90f;
+    private float coefficient = 0.95f;
     private float stopValue = 2.5f;
     [SerializeField, Header("地面判定用レイヤー")]
     private LayerMask groundLayer;
