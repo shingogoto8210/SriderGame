@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     public int gameTime;
 
     private float timeCounter;
+
+    [SerializeField] private GameObject player;
 
 
     // Start is called before the first frame update
@@ -33,8 +36,14 @@ public class GameManager : MonoBehaviour
             if (gameTime <= 0)
             {
                 gameTime = 0;
+                SceneManager.LoadScene("GameOver");
             }
             uiManager.UpdateDisplayGameTime(gameTime);
+        }
+
+        if(player.transform.position.y <= -300)
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }

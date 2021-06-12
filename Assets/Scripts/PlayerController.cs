@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public int score;
     [SerializeField] private UIManager UImanager;
+    public float maxSpeed;
 
     void Start()
     {
@@ -36,6 +37,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Brake();
+        if(rb.velocity.z >= maxSpeed)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, maxSpeed);
+        }
         Accelerate();
         if (isGoal == true)
         {

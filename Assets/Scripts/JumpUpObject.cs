@@ -31,12 +31,12 @@ public class JumpUpObject : MonoBehaviour
 
     void Hide()
     {
-        transform.Translate(0, -1.0f, 0);
+        transform.Translate(0, -2.0f, 0);
     }
 
     void HeadUp()
     {
         //transform.position = upPosition;
-        transform.DOMoveY(-6.0f, 0.25f);
+        transform.DOMoveY(upPosition.y, 0.25f);
     }
 }
