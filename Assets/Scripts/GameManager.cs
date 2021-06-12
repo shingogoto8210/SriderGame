@@ -40,8 +40,12 @@ public class GameManager : MonoBehaviour
             }
             uiManager.UpdateDisplayGameTime(gameTime);
         }
+        Gameover();
+    }
 
-        if(player.transform.position.y <= -300)
+    public void Gameover()
+    {
+        if (player.transform.position.y <= -300)
         {
             SceneManager.LoadScene("GameOver");
         }

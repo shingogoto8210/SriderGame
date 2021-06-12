@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Goal");
             isGoal = true;
+            SceneManager.LoadScene("Clear");
         }
     }
 
