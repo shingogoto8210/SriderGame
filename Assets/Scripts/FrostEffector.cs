@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FrostEffector : MonoBehaviour
 {
-    private float duration = 0.3f;
+    private float duration = 0.5f;
     private bool isApplyEffected;
     
 

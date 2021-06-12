@@ -34,7 +34,7 @@ public class JumpUpObject : MonoBehaviour
         transform.Translate(0, -2.0f, 0);
     }
 
-    void HeadUp()
+    public void HeadUp()
     {
         //transform.position = upPosition;
         transform.DOMoveY(upPosition.y, 0.25f);
