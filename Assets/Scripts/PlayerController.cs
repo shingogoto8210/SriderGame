@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Header("斜面との接地判定")]
     private bool isGround;
     private Animator anim;
-    public int score;
+    public static int score;
     [SerializeField] private UIManager UImanager;
     public float maxSpeed;
 
@@ -137,5 +137,10 @@ public class PlayerController : MonoBehaviour
     {
         score += point;
         UImanager.UpdateDisplayScore(score);
+    }
+
+    public static int GetScore()
+    {
+        return score;
     }
 }
