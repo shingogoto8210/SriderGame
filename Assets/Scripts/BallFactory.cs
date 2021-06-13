@@ -6,20 +6,18 @@ public class BallFactory : MonoBehaviour
 {
     [SerializeField] GameObject ballPrefab;
     private float x;
-    private float z;
     private float timer;
     // Start is called before the first frame update
     void Start()
     {
-        x = Random.Range(-10f, 10f);
-        z = Random.Range(275f, 300f);
+        x = Random.Range(-5f, 5f);
     }
 
     // Update is called once per frame
     public void Instantiate()
     {
        
-            Instantiate(ballPrefab, new Vector3(x,transform.position.y,z), Quaternion.identity);
+            Instantiate(ballPrefab, new Vector3(x,transform.position.y,transform.position.z), Quaternion.identity);
             Debug.Log("instantiate");
     }
 }
